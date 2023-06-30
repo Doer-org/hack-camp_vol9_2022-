@@ -11,7 +11,7 @@ export const Chat = () => {
   //idを取得
   const { id } = useParams();
   const location = useLocation();
-  const socketUrl = `wss://hack-camp-vol9-2022-1-server-bk5ujqkiba-an.a.run.app/ws/${id}`;
+  const socketUrl = `wss://kiechat-bk5ujqkiba-uc.a.run.app/ws/${id}`;
   const [messageHistory, setMessageHistory] = useState([]);
   const { sendMessage, lastMessage } = useWebSocket(socketUrl);
   const [sendState, setSendState] = useState(false);
@@ -39,6 +39,7 @@ export const Chat = () => {
       setMessageHistory((prev) => prev.concat(message));
       setSendState(true);
     }
+    console.log("change")
   }, [lastMessage, setMessageHistory]);
 
   return isLoading ? (
